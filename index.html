@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI for Everybody — Reclaim Your Workweek | Loyola University Maryland</title>
+<meta name="description" content="A practical 12-module course on using AI to reclaim hours from your workweek. Not productivity theater. Work redesign. Built for knowledge workers by Dr. Jason Cherubini, Sellinger School of Business.">
+<meta name="author" content="Dr. Jason Cherubini, Loyola University Maryland">
+<meta name="keywords" content="AI course, AI for everyone, lifestyle design, four hour workweek, reclaim hours, AI workflows, CLEARAI, Cherubini, Loyola">
+<meta property="og:title" content="AI for Everybody — Reclaim Your Workweek">
+<meta property="og:description" content="Use AI to reclaim 5–10 hours a week without losing quality. A 12-module course.">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --green: #1A5632;
+    --green-dark: #0d3f22;
+    --green-light: #E8F5E9;
+    --green-pale: #F0F7F2;
+    --gold: #C4972F;
+    --gold-light: #FDF6E3;
+    --warn: #E65100;
+    --warn-light: #FFF3E0;
+    --info: #1565C0;
+    --info-light: #E3F2FD;
+    --bg: #fafaf8;
+    --card: #ffffff;
+    --text: #1E293B;
+    --text-light: #64748B;
+    --border: #e2e8f0;
+    --radius: 12px;
+    --serif: Georgia, 'Times New Roman', serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.65; font-size: 16px; }
+  h1, h2, h3, h4 { font-family: var(--serif); color: var(--green); font-weight: 700; }
+  h1 { font-size: 2.2rem; line-height: 1.2; }
+  h2 { font-size: 1.65rem; margin: 28px 0 12px; }
+  h3 { font-size: 1.2rem; margin: 20px 0 8px; color: var(--text); }
+  h4 { font-size: 1rem; margin: 14px 0 6px; color: var(--green-dark); font-family: var(--sans); text-transform: uppercase; letter-spacing: 1px; }
+  p { margin-bottom: 14px; }
+  a { color: var(--green); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--gold); }
+  ul, ol { margin: 8px 0 16px 22px; }
+  li { margin-bottom: 6px; }
+  code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: 'SF Mono', Menlo, Consolas, monospace; }
+  pre { background: #0f172a; color: #e2e8f0; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 14px 0; font-size: 0.85rem; line-height: 1.55; }
+  pre code { background: transparent; color: inherit; padding: 0; }
+
+  /* Topbar */
+  .topbar { position: sticky; top: 0; z-index: 100; background: var(--green); color: white; padding: 0 20px; display: flex; align-items: center; gap: 16px; height: 60px; box-shadow: 0 2px 12px rgba(0,0,0,.12); }
+  .topbar-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; letter-spacing: 0.3px; }
+  .topbar-logo span { color: var(--gold); }
+  .topbar-tag { font-size: 0.72rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; margin-left: 4px; }
+  .topbar-spacer { flex: 1; }
+  .menu-toggle { display: none; background: rgba(255,255,255,0.15); border: none; color: white; padding: 8px 14px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; }
+  .topbar select { padding: 8px 12px; border-radius: 6px; border: none; font-size: 0.85rem; background: rgba(255,255,255,0.15); color: white; cursor: pointer; max-width: 220px; }
+  .topbar select option { color: #333; background: white; }
+
+  /* Layout */
+  .layout { display: flex; min-height: 100vh; }
+  .sidebar { width: 260px; background: var(--card); border-right: 1px solid var(--border); padding: 20px 0; overflow-y: auto; position: sticky; top: 60px; height: calc(100vh - 60px); flex-shrink: 0; }
+  .sidebar a { display: block; padding: 9px 22px; color: var(--text-light); text-decoration: none; font-size: 0.87rem; border-left: 3px solid transparent; transition: all 0.15s; }
+  .sidebar a:hover, .sidebar a.active { background: var(--green-light); color: var(--green); border-left-color: var(--green); font-weight: 600; }
+  .sidebar-header { padding: 16px 22px 6px; font-weight: 700; color: var(--green); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 8px; }
+  .sidebar-header:first-child { margin-top: 0; }
+
+  .main { flex: 1; padding: 36px 52px 60px; max-width: 920px; }
+
+  /* Pages */
+  .page { display: none; }
+  .page.active { display: block; animation: fadeIn 0.2s ease-in; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+  .page-badge { display: inline-block; background: var(--gold-light); color: var(--gold); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: 4px 10px; border-radius: 4px; margin-bottom: 12px; }
+
+  /* Hero */
+  .hero { background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%); color: white; padding: 48px 36px; border-radius: var(--radius); margin-bottom: 32px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: 0; right: 0; width: 4px; height: 100%; background: var(--gold); }
+  .hero-badge { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; opacity: 0.75; margin-bottom: 10px; color: var(--gold); }
+  .hero h1 { color: white; font-size: 2.4rem; margin-bottom: 10px; }
+  .hero .subtitle { font-size: 1.15rem; opacity: 0.9; margin-bottom: 20px; max-width: 620px; }
+  .hero .author { font-size: 0.85rem; opacity: 0.7; }
+  .hero .cta-row { margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero .cta { background: var(--gold); color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: 600; border: none; cursor: pointer; font-family: var(--sans); }
+  .hero .cta:hover { background: #d4a843; color: white; }
+  .hero .cta.secondary { background: rgba(255,255,255,0.12); }
+  .hero .cta.secondary:hover { background: rgba(255,255,255,0.22); }
+
+  /* TL;DR */
+  .tldr { background: var(--green-pale); border-left: 4px solid var(--green); padding: 16px 20px; border-radius: 6px; margin: 20px 0 28px; }
+  .tldr-label { font-family: var(--serif); font-size: 0.72rem; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; }
+  .tldr p { margin: 0; font-size: 0.95rem; }
+  .tldr p + p { margin-top: 6px; }
+
+  /* Callouts */
+  .callout { padding: 16px 20px; border-radius: 6px; margin: 18px 0; font-size: 0.93rem; }
+  .callout-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 4px; display: block; }
+  .callout.trap { background: var(--warn-light); border-left: 4px solid var(--warn); }
+  .callout.trap .callout-label { color: var(--warn); }
+  .callout.tip { background: var(--info-light); border-left: 4px solid var(--info); }
+  .callout.tip .callout-label { color: var(--info); }
+  .callout.try { background: var(--gold-light); border-left: 4px solid var(--gold); margin-top: 28px; }
+  .callout.try .callout-label { color: var(--gold); }
+
+  /* Cards */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin: 20px 0; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; cursor: pointer; transition: all 0.18s; border-top: 3px solid var(--green); }
+  .card:hover { transform: translateY(-2px); border-top-color: var(--gold); box-shadow: 0 6px 20px rgba(0,0,0,.06); }
+  .card h3 { margin-top: 0; color: var(--green-dark); }
+  .card .meta { font-size: 0.78rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+
+  /* Module pill */
+  .pill { display: inline-block; background: var(--green-light); color: var(--green-dark); font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: 1px; margin-right: 6px; }
+  .pill.gold { background: var(--gold-light); color: var(--gold); }
+
+  /* Video list */
+  .video-list { list-style: none; margin: 12px 0 18px 0; padding: 0; }
+  .video-list li { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .video-list .v-title { font-weight: 600; color: var(--green-dark); font-size: 0.95rem; }
+  .video-list .v-meta { font-size: 0.78rem; color: var(--text-light); white-space: nowrap; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.92rem; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border); }
+  th { background: var(--green-pale); color: var(--green-dark); font-family: var(--sans); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; }
+
+  /* Module nav (prev/next) */
+  .module-nav { display: flex; justify-content: space-between; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.9rem; }
+  .module-nav a { color: var(--green); text-decoration: none; font-weight: 600; }
+  .module-nav a:hover { color: var(--gold); }
+
+  /* Newsletter */
+  .newsletter { background: var(--green-pale); border-radius: var(--radius); padding: 24px; margin: 32px 0; border: 1px solid var(--border); }
+  .newsletter h3 { margin-top: 0; color: var(--green); font-family: var(--serif); }
+  .newsletter form { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+  .newsletter input { flex: 1; min-width: 200px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 6px; font-family: var(--sans); font-size: 0.95rem; }
+  .newsletter button { background: var(--green); color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; font-family: var(--sans); font-size: 0.9rem; }
+  .newsletter button:hover { background: var(--green-dark); }
+
+  /* Framework diagram */
+  .framework { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin: 20px 0; }
+  .framework-row { display: grid; grid-template-columns: 60px 1fr; gap: 16px; align-items: start; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .framework-row:last-child { border-bottom: none; }
+  .framework-letter { font-family: var(--serif); font-size: 2rem; font-weight: 700; color: var(--gold); line-height: 1; text-align: center; }
+  .framework-row .name { font-weight: 700; color: var(--green-dark); }
+  .framework-row .desc { font-size: 0.9rem; color: var(--text-light); margin-top: 2px; }
+
+  /* Algorithm steps */
+  .steps { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0; }
+  .step { flex: 1 1 150px; background: var(--green-pale); border: 1px solid var(--border); border-radius: 8px; padding: 12px; text-align: center; font-size: 0.85rem; }
+  .step .num { display: inline-block; width: 24px; height: 24px; line-height: 24px; background: var(--green); color: white; border-radius: 50%; font-weight: 700; margin-bottom: 6px; }
+  .step .name { font-weight: 700; color: var(--green-dark); display: block; }
+  .step:last-child { background: var(--gold-light); }
+  .step:last-child .num { background: var(--gold); }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .sidebar { position: fixed; left: -260px; z-index: 99; transition: left 0.2s; box-shadow: 2px 0 12px rgba(0,0,0,.1); }
+    .sidebar.open { left: 0; }
+    .menu-toggle { display: block; }
+    .main { padding: 24px 20px 40px; }
+    .hero { padding: 32px 20px; }
+    .hero h1 { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== TOPBAR ========== -->
+<div class="topbar">
+  <div class="topbar-logo">AI for <span>Everybody</span></div>
+  <div class="topbar-tag">Loyola · Sellinger</div>
+  <div class="topbar-spacer"></div>
+  <button class="menu-toggle" onclick="toggleMenu()">Menu</button>
+  <select id="pageJump" onchange="showPage(this.value)">
+    <optgroup label="Start">
+      <option value="start">Start Here</option>
+      <option value="framework">The CLEARAI Framework</option>
+      <option value="audience">Who This Is For</option>
+    </optgroup>
+    <optgroup label="Modules">
+      <option value="module-01">M1 — The New Logic</option>
+      <option value="module-02">M2 — Workweek Forensics</option>
+      <option value="module-03">M3 — Question Every Requirement</option>
+      <option value="module-04">M4 — Delete Ruthlessly</option>
+      <option value="module-05">M5 — Personal Operating System</option>
+      <option value="module-06">M6 — AI Foundations</option>
+      <option value="module-07">M7 — Simplify Communication</option>
+      <option value="module-08">M8 — Accelerate Research</option>
+      <option value="module-09">M9 — Workflows & Automations</option>
+      <option value="module-10">M10 — Armor Attention</option>
+      <option value="module-11">M11 — Institutionalize Policies</option>
+      <option value="module-12">M12 — Capstone</option>
+    </optgroup>
+    <optgroup label="Tools">
+      <option value="assets">Walk-Away Assets</option>
+      <option value="prompts">Prompt Library</option>
+      <option value="gpt">Custom GPT Spec</option>
+    </optgroup>
+    <optgroup label="More">
+      <option value="about">About &amp; Contact</option>
+    </optgroup>
+  </select>
+</div>
+
+<div class="layout">
+
+<!-- ========== SIDEBAR ========== -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">Start</div>
+  <a href="#" onclick="showPage('start');return false" class="active" data-page="start">Start Here</a>
+  <a href="#" onclick="showPage('framework');return false" data-page="framework">The CLEARAI Framework</a>
+  <a href="#" onclick="showPage('audience');return false" data-page="audience">Who This Is For</a>
+
+  <div class="sidebar-header">The 12 Modules</div>
+  <a href="#" onclick="showPage('module-01');return false" data-page="module-01">1. The New Logic</a>
+  <a href="#" onclick="showPage('module-02');return false" data-page="module-02">2. Workweek Forensics</a>
+  <a href="#" onclick="showPage('module-03');return false" data-page="module-03">3. Question Every Requirement</a>
+  <a href="#" onclick="showPage('module-04');return false" data-page="module-04">4. Delete Ruthlessly</a>
+  <a href="#" onclick="showPage('module-05');return false" data-page="module-05">5. Personal Operating System</a>
+  <a href="#" onclick="showPage('module-06');return false" data-page="module-06">6. AI Foundations</a>
+  <a href="#" onclick="showPage('module-07');return false" data-page="module-07">7. Simplify Communication</a>
+  <a href="#" onclick="showPage('module-08');return false" data-page="module-08">8. Accelerate Research</a>
+  <a href="#" onclick="showPage('module-09');return false" data-page="module-09">9. Workflows &amp; Automations</a>
+  <a href="#" onclick="showPage('module-10');return false" data-page="module-10">10. Armor Attention</a>
+  <a href="#" onclick="showPage('module-11');return false" data-page="module-11">11. Institutionalize Policies</a>
+  <a href="#" onclick="showPage('module-12');return false" data-page="module-12">12. Capstone</a>
+
+  <div class="sidebar-header">Tools</div>
+  <a href="#" onclick="showPage('assets');return false" data-page="assets">Walk-Away Assets</a>
+  <a href="#" onclick="showPage('prompts');return false" data-page="prompts">Prompt Library</a>
+  <a href="#" onclick="showPage('gpt');return false" data-page="gpt">Custom GPT Spec</a>
+
+  <div class="sidebar-header">More</div>
+  <a href="#" onclick="showPage('about');return false" data-page="about">About &amp; Contact</a>
+</nav>
+
+<!-- ========== MAIN ========== -->
+<main class="main">
+
+<!-- =========================================================== -->
+<!-- START -->
+<!-- =========================================================== -->
+<section id="start" class="page active">
+  <div class="hero">
+    <div class="hero-badge">A Practical Course · 12 Modules</div>
+    <h1>Reclaim 5–10 hours a week with AI — without losing quality.</h1>
+    <p class="subtitle">Not productivity theater. Work redesign. A sequenced course that teaches you to question, delete, simplify, accelerate, and <em>only then</em> automate the work eating your week.</p>
+    <p class="author">By Dr. Jason Cherubini, Sellinger School of Business, Loyola University Maryland</p>
+    <div class="cta-row">
+      <button class="cta" onclick="showPage('module-01')">Start Module 1</button>
+      <button class="cta secondary" onclick="showPage('framework')">See the Framework</button>
+    </div>
+  </div>
+
+  <div class="tldr">
+    <div class="tldr-label">TL;DR</div>
+    <p>Most people adopt AI and end up with <em>more</em> output, not fewer hours. This course fixes that by redesigning your work first, adding AI second, and installing policies that keep the gains.</p>
+    <p>12 modules. 4–7 short videos each (3–6 min). A workbook, a walk-away asset, and a Custom GPT coaching session per module. Target: reclaim 5–10 hours/week by Module 12.</p>
+  </div>
+
+  <h2>Why this course exists</h2>
+  <p>Every knowledge worker I know has a version of the same story: they started using ChatGPT or Claude, got faster at drafts and summaries, and then somehow ended up working <em>more</em>. The tools didn't reclaim their time; the system around them absorbed the gains.</p>
+  <p>The problem isn't the tools. It's that productivity and redesign are different things. Productivity makes a broken system run faster. Redesign makes you question whether the system should exist at all.</p>
+  <p>This course is built on a stack of ideas — Ferriss on lifestyle design, Allen on trusted systems, McKeown on essentialism, Newport on deep work, Clear on habits, Eyal on attention, and the engineering algorithm of <em>question → delete → simplify → accelerate → automate</em> — reframed for the AI era.</p>
+
+  <h2>What's in here</h2>
+  <div class="card-grid">
+    <div class="card" onclick="showPage('framework')">
+      <div class="meta">Framework</div>
+      <h3>CLEARAI</h3>
+      <p>The 7-letter operating framework that runs the course.</p>
+    </div>
+    <div class="card" onclick="showPage('module-01')">
+      <div class="meta">12 Modules</div>
+      <h3>The course itself</h3>
+      <p>Diagnose → Eliminate → Build → Augment → Redesign → Armor → Institutionalize.</p>
+    </div>
+    <div class="card" onclick="showPage('assets')">
+      <div class="meta">Templates</div>
+      <h3>Walk-Away Assets</h3>
+      <p>12 downloadable worksheets, matrices, canvases, and blueprints.</p>
+    </div>
+    <div class="card" onclick="showPage('prompts')">
+      <div class="meta">Prompts</div>
+      <h3>Prompt Library</h3>
+      <p>RCTCO-structured prompts for every recurring task.</p>
+    </div>
+    <div class="card" onclick="showPage('gpt')">
+      <div class="meta">Coach</div>
+      <h3>Custom GPT</h3>
+      <p>A twelve-mode AI coach that walks you through every module.</p>
+    </div>
+    <div class="card" onclick="showPage('audience')">
+      <div class="meta">Audience</div>
+      <h3>Who it's for</h3>
+      <p>Faculty, consultants, founders, managers, creators, professional staff.</p>
+    </div>
+  </div>
+
+  <div class="newsletter">
+    <h3>Want updates as new modules and templates drop?</h3>
+    <p>Occasional emails. Practical. No spam.</p>
+    <form onsubmit="handleNewsletter(event)">
+      <input type="email" placeholder="you@example.com" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- FRAMEWORK -->
+<!-- =========================================================== -->
+<section id="framework" class="page">
+  <div class="page-badge">The Spine</div>
+  <h1>CLEARAI — The course operating framework</h1>
+  <div class="tldr">
+    <div class="tldr-label">TL;DR</div>
+    <p>CLEARAI is the 7-letter sequence that runs the course. It embeds an older engineering principle — <em>question, delete, simplify, accelerate, automate</em> — and reorders it around what AI makes newly possible. Automation is <strong>last</strong>, not first.</p>
+  </div>
+
+  <div class="framework">
+    <div class="framework-row"><div class="framework-letter">C</div><div><span class="name">Clarify what matters</span><div class="desc">Module 1. Before touching any tool, define the work that actually deserves your time.</div></div></div>
+    <div class="framework-row"><div class="framework-letter">L</div><div><span class="name">Log the work</span><div class="desc">Module 2. Audit where hours actually go. Feelings are wrong by 30–50%.</div></div></div>
+    <div class="framework-row"><div class="framework-letter">E</div><div><span class="name">Eliminate the unnecessary</span><div class="desc">Modules 3–4. Question inherited work. Delete more than feels comfortable.</div></div></div>
+    <div class="framework-row"><div class="framework-letter">A</div><div><span class="name">Augment the repetitive</span><div class="desc">Modules 5–8. Build a personal operating system, then layer AI onto stable recurring work.</div></div></div>
+    <div class="framework-row"><div class="framework-letter">R</div><div><span class="name">Redesign the workflow</span><div class="desc">Module 9. Turn repeatable work into documented pipelines with human checkpoints.</div></div></div>
+    <div class="framework-row"><div class="framework-letter">A</div><div><span class="name">Armor attention</span><div class="desc">Module 10. Defend the reclaimed hours from silent reabsorption.</div></div></div>
+    <div class="framework-row"><div class="framework-letter">I</div><div><span class="name">Institutionalize the gains</span><div class="desc">Modules 11–12. Policies and blueprints so faster work doesn't become more work.</div></div></div>
+  </div>
+
+  <h2>The order-of-operations inside CLEARAI</h2>
+  <p>Embedded in the framework is an engineering algorithm about how to strip bureaucracy out of anything. The order matters. Most AI efforts fail because people skip to step 5.</p>
+
+  <div class="steps">
+    <div class="step"><span class="num">1</span><span class="name">Question</span>every requirement</div>
+    <div class="step"><span class="num">2</span><span class="name">Delete</span>any part you can</div>
+    <div class="step"><span class="num">3</span><span class="name">Simplify</span>what remains</div>
+    <div class="step"><span class="num">4</span><span class="name">Accelerate</span>cycle time</div>
+    <div class="step"><span class="num">5</span><span class="name">Automate</span>what's left</div>
+  </div>
+
+  <div class="callout trap">
+    <span class="callout-label">The most common mistake</span>
+    Automating a process that should have been deleted. Optimization and automation are the last two steps — not the first.
+  </div>
+
+  <h2>What the course borrows, from whom</h2>
+  <ul>
+    <li><strong>Tim Ferriss</strong> — lifestyle design; selective focus; elimination of low-value work.</li>
+    <li><strong>David Allen (GTD)</strong> — capture, clarify, organize, reflect, engage. Trusted systems beat memory.</li>
+    <li><strong>Greg McKeown (Essentialism)</strong> — disciplined prioritization; the hidden cost of yes.</li>
+    <li><strong>Cal Newport</strong> — deep work, digital minimalism, asynchronous norms, slow productivity.</li>
+    <li><strong>James Clear</strong> — habits and environment design.</li>
+    <li><strong>Nir Eyal</strong> — managing internal and external triggers for distraction.</li>
+    <li><strong>Engineering-style algorithms</strong> for stripping bureaucracy out of any process.</li>
+  </ul>
+
+  <p>Each idea shows up where it's most useful — not as a standalone chapter, but as a tool in the module where it earns its keep.</p>
+</section>
+
+<!-- =========================================================== -->
+<!-- AUDIENCE -->
+<!-- =========================================================== -->
+<section id="audience" class="page">
+  <div class="page-badge">Audience</div>
+  <h1>Who this course is for</h1>
+  <div class="tldr">
+    <div class="tldr-label">TL;DR</div>
+    <p>Any knowledge worker with enough autonomy to redesign their own week. You'll pick one pilot domain in Module 1 and the rest of the course shapes around your work.</p>
+  </div>
+
+  <h2>The best-fit profiles</h2>
+  <div class="card-grid">
+    <div class="card"><div class="meta">Academia</div><h3>Faculty &amp; Administrators</h3><p>Class prep, research synthesis, student communication, committee work, and the endless admin creep.</p></div>
+    <div class="card"><div class="meta">Advisory</div><h3>Consultants &amp; Advisors</h3><p>Intake, discovery, proposals, deliverables, client updates, follow-ups.</p></div>
+    <div class="card"><div class="meta">Ownership</div><h3>Founders &amp; Small Business Operators</h3><p>Wearing too many hats. The week-eating admin, not the strategic work.</p></div>
+    <div class="card"><div class="meta">Team Leadership</div><h3>Managers &amp; Department Heads</h3><p>Meetings, status updates, reports, approvals, and the coordination tax.</p></div>
+    <div class="card"><div class="meta">Creation</div><h3>Creators &amp; Thought Leaders</h3><p>Repurposing talks, newsletters, books, and courses into more outputs with less time.</p></div>
+    <div class="card"><div class="meta">Staff</div><h3>Professional Staff</h3><p>Mid-career knowledge workers overwhelmed by communication load, with room to redesign.</p></div>
+  </div>
+
+  <h2>What you need going in</h2>
+  <ul>
+    <li>Some recurring cognitive work (writing, synthesis, coordination, analysis, communication).</li>
+    <li>Enough autonomy to change how you work, not just what you produce.</li>
+    <li>Willingness to audit honestly and delete aggressively.</li>
+    <li>Access to one major AI tool — ChatGPT, Claude, Gemini, or Microsoft Copilot. Any is fine.</li>
+  </ul>
+
+  <h2>What you don't need</h2>
+  <ul>
+    <li>Technical skills. This is not a coding course.</li>
+    <li>A specific industry. Examples are intentionally broad.</li>
+    <li>A team to implement with. Solo practitioners get the full value.</li>
+  </ul>
+
+  <div class="callout tip">
+    <span class="callout-label">A note on honesty</span>
+    The hardest part of this course is the audit in Module 2 and the deletions in Module 4 — both require honesty about where your hours actually go and which obligations actually matter. Bring it.
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- MODULE 1 -->
+<!-- =========================================================== -->
+<section id="module-01" class="page">
+  <div class="page-badge">Module 1 · C — Clarify</div>
+  <h1>The New Logic of AI Lifestyle Design</h1>
+  <p><span class="pill">60–75 min</span><span class="pill gold">Walk-away: Workweek Vision Blueprint</span></p>
+
+  <div class="tldr">
+    <div class="tldr-label">Module Promise</div>
+    <p>By the end, you have a written vision of your lower-hour workweek, a target number of hours to reclaim, and a clear mental model: AI is a work-redesign lever, not a productivity booster.</p>
+  </div>
+
+  <h2>Learning Objectives</h2>
+  <ol>
+    <li>Explain the difference between efficiency, leverage, and redesign.</li>
+    <li>Name the three traps that make most "AI productivity" efforts fail.</li>
+    <li>Apply the sequence Question → Delete → Simplify → Accelerate → Automate to any recurring work.</li>
+    <li>Articulate your own target workweek.</li>
+    <li>Commit to one domain as your pilot for the course.</li>
+  </ol>
+
+  <h2>Videos (25 min, 6 micro-videos)</h2>
+  <ul class="video-list">
+    <li><span class="v-title">1.1 — The Broken Promise of Productivity</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">1.2 — The Three Traps</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">1.3 — The CLEARAI Spine</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">1.4 — Why Automation Comes Last</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">1.5 — Your Pilot Domain</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">1.6 — How to Work Through This Course</span><span class="v-meta">3 min</span></li>
+  </ul>
+
+  <div class="callout trap">
+    <span class="callout-label">The three traps</span>
+    <strong>Acceleration</strong> — automating bad work. <strong>Reactivity</strong> — faster replies invite more replies. <strong>Overhead</strong> — new tools create new maintenance.
+  </div>
+
+  <h2>Walk-Away Asset — Workweek Vision &amp; Time-Recovery Blueprint</h2>
+  <p>A one-page worksheet you fill in during this module. Fields: current hours, target hours, what to stop doing, what to protect, your pilot domain, and a one-sentence transformation statement.</p>
+
+  <h2>Custom GPT Coach — Vision Mode</h2>
+  <p>The course GPT asks 6 short questions and hands you back a completed blueprint plus a drafted transformation statement in your own words.</p>
+
+  <h2>Homework before Module 2</h2>
+  <div class="callout try">
+    <span class="callout-label">Deploy Today</span>
+    For the next 5–7 days, log every task in your pilot domain. Don't optimize yet — just observe. Module 2 converts the log into your audit.
+  </div>
+
+  <div class="module-nav">
+    <a href="#" onclick="showPage('framework');return false">← Framework</a>
+    <a href="#" onclick="showPage('module-02');return false">Module 2 →</a>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- MODULE 2 -->
+<!-- =========================================================== -->
+<section id="module-02" class="page">
+  <div class="page-badge">Module 2 · L — Log</div>
+  <h1>Workweek Forensics</h1>
+  <p><span class="pill">90 min</span><span class="pill gold">Walk-away: AI Workweek Audit Tracker</span></p>
+
+  <div class="tldr">
+    <div class="tldr-label">Module Promise</div>
+    <p>Convert a week of raw task data into a scored, ranked opportunity map — the top 10 places where hours can be reclaimed.</p>
+  </div>
+
+  <h2>Learning Objectives</h2>
+  <ol>
+    <li>Run a credible workweek audit.</li>
+    <li>Distinguish visible tasks from hidden cognitive labor.</li>
+    <li>Score tasks on value, time, repeatability, energy, AI-fit.</li>
+    <li>Classify each task: Delete / Compress / Delegate-to-AI / Delegate-to-Human / Protect.</li>
+    <li>Produce a ranked top-10 opportunity map.</li>
+  </ol>
+
+  <h2>Videos (25 min, 6 micro-videos)</h2>
+  <ul class="video-list">
+    <li><span class="v-title">2.1 — Audit Before You Redesign</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">2.2 — The Five Hidden Time Sinks</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">2.3 — The Audit Method</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">2.4 — Scoring Without Overthinking</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">2.5 — From Audit to Opportunity Map</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">2.6 — Common Audit Mistakes</span><span class="v-meta">3 min</span></li>
+  </ul>
+
+  <div class="callout tip">
+    <span class="callout-label">The five hidden time sinks</span>
+    Searching for files &amp; prior decisions. Context-switching between tools. Meeting prep and follow-up (not the meeting itself). Status reporting. Re-deciding things already decided.
+  </div>
+
+  <h2>Walk-Away Asset — AI Workweek Audit Tracker</h2>
+  <p>A pre-built spreadsheet (Google Sheets + Excel) with columns for task, frequency, minutes, weekly total, energy, strategic value, repeatability, AI suitability, decision. Auto-calculated weekly hours and recoverable-hours estimate. Second tab: auto-populated Opportunity Map.</p>
+
+  <h2>Custom GPT Coach — Audit Mode</h2>
+  <p>Paste your task log. The GPT walks you through scoring, pushes back on over-generous "high value" ratings, and produces a ranked top-10 opportunity map with a one-sentence summary of hours recoverable.</p>
+
+  <h2>Homework before Module 3</h2>
+  <div class="callout try">
+    <span class="callout-label">Deploy Today</span>
+    Complete your audit. Circle the three items you most want to eliminate. Those become the focus of Module 3.
+  </div>
+
+  <div class="module-nav">
+    <a href="#" onclick="showPage('module-01');return false">← Module 1</a>
+    <a href="#" onclick="showPage('module-03');return false">Module 3 →</a>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- MODULE 3 -->
+<!-- =========================================================== -->
+<section id="module-03" class="page">
+  <div class="page-badge">Module 3 · E — Eliminate (1)</div>
+  <h1>Question Every Requirement</h1>
+  <p><span class="pill">75 min</span><span class="pill gold">Walk-away: Requirements Interrogation Worksheet</span></p>
+
+  <div class="tldr">
+    <div class="tldr-label">Module Promise</div>
+    <p>Every recurring obligation in your week gets traced to a person and a purpose. The ones that can't be traced become delete candidates for Module 4.</p>
+  </div>
+
+  <h2>Learning Objectives</h2>
+  <ol>
+    <li>Apply the "name the person" rule to every recurring requirement.</li>
+    <li>Distinguish inherited work from essential work.</li>
+    <li>Estimate the opportunity cost of every standing commitment.</li>
+    <li>Identify the 5 obligations most likely to fail interrogation.</li>
+  </ol>
+
+  <h2>Videos (25 min, 5 micro-videos)</h2>
+  <ul class="video-list">
+    <li><span class="v-title">3.1 — Where Did This Requirement Come From?</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">3.2 — The "Name the Person" Rule</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">3.3 — Inherited vs. Essential</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">3.4 — The Hidden Cost of "Yes"</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">3.5 — The Five Most Likely Failures</span><span class="v-meta">5 min</span></li>
+  </ul>
+
+  <div class="callout tip">
+    <span class="callout-label">The interrogation</span>
+    For every recurring obligation, ask: (1) Who originally asked for this? (2) What decision does it enable? (3) What breaks if it stops? (4) Would I start it today if it didn't exist?
+  </div>
+
+  <h2>Walk-Away Asset — Requirements Interrogation Worksheet</h2>
+  <p>One row per obligation. Fields: author, decision enabled, cost of stopping, "would I start it today?", status (Delete candidate / Keep / Needs info). Includes a one-page script pack for asking <em>"why do we do this?"</em> without sounding combative.</p>
+
+  <h2>Custom GPT Coach — Essentialism Mode</h2>
+  <p>Walks you through each top-10 obligation with the 4-question interrogation. Flags anything without a clear author. Drafts a message you can use to propose stopping each one.</p>
+
+  <div class="callout try">
+    <span class="callout-label">Deploy Today</span>
+    Pick ONE delete candidate and actually kill it this week. Draft the email. Send it. Bring the result to Module 4.
+  </div>
+
+  <div class="module-nav">
+    <a href="#" onclick="showPage('module-02');return false">← Module 2</a>
+    <a href="#" onclick="showPage('module-04');return false">Module 4 →</a>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- MODULE 4 -->
+<!-- =========================================================== -->
+<section id="module-04" class="page">
+  <div class="page-badge">Module 4 · E — Eliminate (2)</div>
+  <h1>Delete Ruthlessly</h1>
+  <p><span class="pill">75 min</span><span class="pill gold">Walk-away: Keep / Kill / Delegate / Redesign Matrix</span></p>
+
+  <div class="tldr">
+    <div class="tldr-label">Module Promise</div>
+    <p>Execute the first real hour-reclaim of the course. Remove, shrink, or hand off enough work to clear 3–5 hours a week — before any AI tool is touched.</p>
+  </div>
+
+  <h2>Learning Objectives</h2>
+  <ol>
+    <li>Apply the 10% add-back rule as a deletion discipline.</li>
+    <li>Classify every top-10 obligation into Keep / Kill / Delegate / Redesign.</li>
+    <li>Execute real deletions in the current week.</li>
+    <li>Draft defensible language for stopping or handing off work.</li>
+  </ol>
+
+  <h2>Videos (25 min, 5 micro-videos)</h2>
+  <ul class="video-list">
+    <li><span class="v-title">4.1 — Why Subtraction Beats Optimization</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">4.2 — The 10% Add-Back Rule</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">4.3 — The Four Disposals</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">4.4 — Scripts for Saying No</span><span class="v-meta">6 min</span></li>
+    <li><span class="v-title">4.5 — The Deletion Ledger</span><span class="v-meta">3 min</span></li>
+  </ul>
+
+  <div class="callout tip">
+    <span class="callout-label">The 10% add-back rule</span>
+    If you don't end up adding back at least 10% of what you deleted, you didn't delete enough. Cut aggressively — you can always restore what matters.
+  </div>
+
+  <h2>Walk-Away Asset — Keep / Kill / Delegate / Redesign Matrix</h2>
+  <p>A 2×2 matrix (value × repeatability) mapped to default disposals, plus a deletion ledger with columns for weekly hours reclaimed, action date, and "added back?" tracking. Bundled script pack: 6 pre-written messages for declining or handing off common obligations.</p>
+
+  <h2>Custom GPT Coach — Deletion Mode</h2>
+  <p>Classifies your delete candidates, forces a specific action date for each Kill, and drafts the outgoing messages in your voice.</p>
+
+  <div class="callout try">
+    <span class="callout-label">Deploy Today</span>
+    Execute at least 3 deletions this week. Log the hours reclaimed in the ledger.
+  </div>
+
+  <div class="module-nav">
+    <a href="#" onclick="showPage('module-03');return false">← Module 3</a>
+    <a href="#" onclick="showPage('module-05');return false">Module 5 →</a>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- MODULE 5 -->
+<!-- =========================================================== -->
+<section id="module-05" class="page">
+  <div class="page-badge">Module 5 · Bridge</div>
+  <h1>Build Your Personal Operating System</h1>
+  <p><span class="pill">90 min</span><span class="pill gold">Walk-away: Personal OS Setup Guide</span></p>
+
+  <div class="tldr">
+    <div class="tldr-label">Module Promise</div>
+    <p>A minimum viable operating system — capture, projects, reference, templates, weekly review — set up inside tools you already use. Ready for AI to plug into in Module 6.</p>
+  </div>
+
+  <h2>Learning Objectives</h2>
+  <ol>
+    <li>Understand why AI fails to save time when the underlying work is disorganized.</li>
+    <li>Set up a trusted capture system.</li>
+    <li>Separate projects, tasks, reference, and templates.</li>
+    <li>Install a weekly review ritual.</li>
+    <li>Build a starter template library.</li>
+  </ol>
+
+  <h2>Videos (28 min, 6 micro-videos)</h2>
+  <ul class="video-list">
+    <li><span class="v-title">5.1 — Why AI Needs a Legible System</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">5.2 — Capture and the Trusted Inbox</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">5.3 — Projects vs. Tasks vs. Reference</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">5.4 — The Weekly Review</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">5.5 — Templates as the Default</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">5.6 — Your Minimum Viable OS</span><span class="v-meta">5 min</span></li>
+  </ul>
+
+  <div class="callout tip">
+    <span class="callout-label">The 5-folder structure</span>
+    Inbox · Active Projects · Waiting For · Reference · Templates. Build it in any tool (Notion, Obsidian, Google Drive, Apple/Microsoft native). The tool doesn't matter. The structure does.
+  </div>
+
+  <h2>Walk-Away Asset — Personal OS Setup Guide</h2>
+  <p>Step-by-step PDF with tool-specific versions for Notion, Obsidian, Google Drive. Includes 45-minute Day-1 setup checklist, weekly review checklist, 5 starter templates (meeting agenda, status update, brief, email reply, decision memo), migration guide, and troubleshooting tips.</p>
+
+  <h2>Custom GPT Coach — Operating System Mode</h2>
+  <p>Builds a custom 5-folder structure in your chosen tool. Drafts 5 templates specific to your pilot domain. Personalizes your weekly review checklist.</p>
+
+  <div class="callout try">
+    <span class="callout-label">Deploy Today</span>
+    Complete the 45-minute setup. Do one weekly review. Use at least one template in live work before Module 6.
+  </div>
+
+  <div class="module-nav">
+    <a href="#" onclick="showPage('module-04');return false">← Module 4</a>
+    <a href="#" onclick="showPage('module-06');return false">Module 6 →</a>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- MODULE 6 -->
+<!-- =========================================================== -->
+<section id="module-06" class="page">
+  <div class="page-badge">Module 6 · A — Augment (1)</div>
+  <h1>AI Foundations: Prompting with Discipline</h1>
+  <p><span class="pill">90 min</span><span class="pill gold">Walk-away: Core Prompt Pack</span></p>
+
+  <div class="tldr">
+    <div class="tldr-label">Module Promise</div>
+    <p>Leave with 5 personal anchor prompts — reusable, templated, pilot-domain-specific — that work on any major AI tool.</p>
+  </div>
+
+  <h2>Learning Objectives</h2>
+  <ol>
+    <li>Name what AI is reliably good at and what it isn't.</li>
+    <li>Apply the Role / Context / Task / Constraints / Output (RCTCO) structure.</li>
+    <li>Use exemplars and structured outputs.</li>
+    <li>Build a personal review protocol for AI-generated work.</li>
+    <li>Create 5 anchor prompts for recurring pilot-domain tasks.</li>
+  </ol>
+
+  <h2>Videos (26 min, 6 micro-videos)</h2>
+  <ul class="video-list">
+    <li><span class="v-title">6.1 — What AI Is Actually Good At</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">6.2 — The RCTCO Prompt Structure</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">6.3 — Exemplars Beat Descriptions</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">6.4 — Structured Outputs</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">6.5 — Reviewing AI Work</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">6.6 — Your Anchor Prompts</span><span class="v-meta">4 min</span></li>
+  </ul>
+
+  <h2>The RCTCO Structure</h2>
+  <ul>
+    <li><strong>Role</strong> — who the AI is acting as</li>
+    <li><strong>Context</strong> — what it needs to know</li>
+    <li><strong>Task</strong> — the specific ask</li>
+    <li><strong>Constraints</strong> — tone, length, audience, format</li>
+    <li><strong>Output</strong> — the exact shape of the answer</li>
+  </ul>
+
+  <h2>The Five Anchor Prompts</h2>
+  <p>Every knowledge worker builds these five, customized to their pilot domain: <strong>Summarize</strong>, <strong>Draft</strong>, <strong>Compare</strong>, <strong>Transform</strong>, <strong>Extract</strong>.</p>
+
+  <h2>Walk-Away Asset — Core Prompt Pack</h2>
+  <p>Five RCTCO-structured prompt templates with placeholders, filled examples, review checklists, and variations. See the <a href="#" onclick="showPage('prompts');return false">Prompt Library</a> for full text.</p>
+
+  <h2>Custom GPT Coach — Prompt Builder Mode</h2>
+  <p>Walks through each of the 5 prompt types. For each, asks about task, audience, tone, output, and pastes your exemplars. Returns a saved, named, RCTCO-structured prompt with a review checklist.</p>
+
+  <div class="callout try">
+    <span class="callout-label">Deploy Today</span>
+    Use each anchor prompt at least twice on real pilot-domain work. Tune them based on what breaks.
+  </div>
+
+  <div class="module-nav">
+    <a href="#" onclick="showPage('module-05');return false">← Module 5</a>
+    <a href="#" onclick="showPage('module-07');return false">Module 7 →</a>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- MODULE 7 -->
+<!-- =========================================================== -->
+<section id="module-07" class="page">
+  <div class="page-badge">Module 7 · A — Augment (2) · Simplify</div>
+  <h1>Communication Compression</h1>
+  <p><span class="pill">90 min</span><span class="pill gold">Walk-away: Communication Compression Kit</span></p>
+
+  <div class="tldr">
+    <div class="tldr-label">Module Promise</div>
+    <p>Cut 3–6 hours a week from email, meetings, and follow-up — the single largest source of reclaimable time for most knowledge workers.</p>
+  </div>
+
+  <h2>Learning Objectives</h2>
+  <ol>
+    <li>Run AI-assisted inbox triage in batches.</li>
+    <li>Convert every meeting into a decisions-and-actions artifact.</li>
+    <li>Draft stakeholder-specific responses in under 60 seconds.</li>
+    <li>Shift appropriate communication from synchronous to asynchronous.</li>
+    <li>Build a canned-response library for recurring inquiries.</li>
+  </ol>
+
+  <h2>Videos (28 min, 6 micro-videos)</h2>
+  <ul class="video-list">
+    <li><span class="v-title">7.1 — Where Communication Eats Your Week</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">7.2 — Inbox Triage with AI</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">7.3 — Meeting-to-Action Pipelines</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">7.4 — Shorter Meetings, Sharper Agendas</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">7.5 — Async-by-Default</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">7.6 — Canned Responses and FAQs</span><span class="v-meta">4 min</span></li>
+  </ul>
+
+  <h2>Walk-Away Asset — Communication Compression Kit</h2>
+  <p>Bundle includes: inbox triage prompt, meeting-to-action prompt, agenda generator, async status template, canned-response library starter (Sheets), and a one-page communication norms draft.</p>
+
+  <div class="callout tip">
+    <span class="callout-label">The meeting-to-action pipeline</span>
+    Transcript → summary → decisions → action items with owners and deadlines → follow-up email. Runs in under 2 minutes per meeting.
+  </div>
+
+  <h2>Custom GPT Coach — Communication Mode</h2>
+  <p>Builds your triage prompt from your exemplars, drafts 5–10 canned responses for your top-repeated messages, and drafts your personal communication norms one-pager.</p>
+
+  <div class="callout try">
+    <span class="callout-label">Deploy Today</span>
+    Run the kit for one full week. Batched inbox. Pipeline on every meeting. Cancel or convert at least one recurring meeting to async. Log hours saved.
+  </div>
+
+  <div class="module-nav">
+    <a href="#" onclick="showPage('module-06');return false">← Module 6</a>
+    <a href="#" onclick="showPage('module-08');return false">Module 8 →</a>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- MODULE 8 -->
+<!-- =========================================================== -->
+<section id="module-08" class="page">
+  <div class="page-badge">Module 8 · A — Augment (3) · Accelerate</div>
+  <h1>Research &amp; Knowledge Work</h1>
+  <p><span class="pill">90 min</span><span class="pill gold">Walk-away: Research &amp; Briefing Workflow Pack</span></p>
+
+  <div class="tldr">
+    <div class="tldr-label">Module Promise</div>
+    <p>Cut reading and synthesis time by 50–70%. Turn any source packet into decision-ready briefs, comparison matrices, slide outlines, and content derivatives.</p>
+  </div>
+
+  <h2>Learning Objectives</h2>
+  <ol>
+    <li>Run source-grounded summarization (vs. generic LLM output).</li>
+    <li>Produce decision-ready briefs from raw source material.</li>
+    <li>Build comparison matrices across multiple sources.</li>
+    <li>Convert one input into many outputs.</li>
+    <li>Establish a reusable knowledge-asset library.</li>
+  </ol>
+
+  <h2>Videos (28 min, 6 micro-videos)</h2>
+  <ul class="video-list">
+    <li><span class="v-title">8.1 — The Reading-to-Output Gap</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">8.2 — Source-Grounded Summarization</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">8.3 — The Brief as Default Deliverable</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">8.4 — Comparison Matrices</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">8.5 — One Input, Many Outputs</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">8.6 — Reusable Knowledge Assets</span><span class="v-meta">5 min</span></li>
+  </ul>
+
+  <h2>Walk-Away Asset — Research &amp; Briefing Workflow Pack</h2>
+  <p>Source-grounded summary prompt, comparison matrix prompt, brief-to-derivatives prompt, brief template (Markdown + Docx), knowledge-asset naming convention, and a platform guide (ChatGPT Projects vs. Claude Projects vs. NotebookLM vs. Copilot vs. Gemini).</p>
+
+  <div class="callout tip">
+    <span class="callout-label">Source-grounded vs. generic</span>
+    The difference between "summarize this" and "summarize this using only what's in the source — flag anything you're inferring." The second is the professional discipline.
+  </div>
+
+  <h2>Custom GPT Coach — Research Mode</h2>
+  <p>Paste your source packet. The GPT produces a full brief, a comparison matrix (if multi-source), and requested derivatives — all saved to your knowledge library.</p>
+
+  <div class="callout try">
+    <span class="callout-label">Deploy Today</span>
+    Run the full pipeline on one real source packet this week. Save brief + derivatives to your knowledge library. Measure time saved.
+  </div>
+
+  <div class="module-nav">
+    <a href="#" onclick="showPage('module-07');return false">← Module 7</a>
+    <a href="#" onclick="showPage('module-09');return false">Module 9 →</a>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- MODULE 9 -->
+<!-- =========================================================== -->
+<section id="module-09" class="page">
+  <div class="page-badge">Module 9 · R — Redesign · Automate</div>
+  <h1>Workflows, Automations &amp; Agents</h1>
+  <p><span class="pill">90 min</span><span class="pill gold">Walk-away: Workflow Builder Canvas + Readiness Checklist</span></p>
+
+  <div class="tldr">
+    <div class="tldr-label">Module Promise</div>
+    <p>Convert 2–3 stable recurring workflows into documented, semi-automated pipelines with clear triggers, checkpoints, and human review gates.</p>
+  </div>
+
+  <h2>The Automation Ladder</h2>
+  <p>Prompt → repeatable prompt → SOP → template → workflow → agent. Most people try to climb 5 rungs at once and fall. You only move up when the rung below is stable.</p>
+
+  <h2>Videos (28 min, 6 micro-videos)</h2>
+  <ul class="video-list">
+    <li><span class="v-title">9.1 — The Automation Ladder</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">9.2 — Mapping a Workflow</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">9.3 — What's Automatable, What Isn't</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">9.4 — Checkpoints and Fail-Safes</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">9.5 — Agent Basics for Non-Technical Users</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">9.6 — When Not to Automate</span><span class="v-meta">4 min</span></li>
+  </ul>
+
+  <h2>Walk-Away Asset — Workflow Builder Canvas + Readiness Checklist</h2>
+  <p>One-page canvas per workflow (trigger, inputs, AI task, human task, tools, output, review, exceptions, time saved). Readiness checklist with 8 criteria — score determines whether to keep manual, augment, semi-automate, or fully automate. Bundled: 3 worked examples (meeting follow-up, research brief, inbox triage).</p>
+
+  <div class="callout trap">
+    <span class="callout-label">Not everything belongs on the ladder</span>
+    Low frequency. Unstable inputs. Judgment-heavy. Relationship-sensitive. Privacy concerns. Sometimes the right answer is: leave it manual, or keep it deleted.
+  </div>
+
+  <h2>Custom GPT Coach — Workflow Design Mode</h2>
+  <p>Walks you through the canvas for any recurring task. Runs the Readiness Checklist. Returns a recommendation with a specific tool stack.</p>
+
+  <div class="callout try">
+    <span class="callout-label">Deploy Today</span>
+    Pick ONE workflow this week. Build it. Run it 3 times. Track what breaks.
+  </div>
+
+  <div class="module-nav">
+    <a href="#" onclick="showPage('module-08');return false">← Module 8</a>
+    <a href="#" onclick="showPage('module-10');return false">Module 10 →</a>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- MODULE 10 -->
+<!-- =========================================================== -->
+<section id="module-10" class="page">
+  <div class="page-badge">Module 10 · A — Armor</div>
+  <h1>Armor Attention</h1>
+  <p><span class="pill">75 min</span><span class="pill gold">Walk-away: Attention Defense Playbook</span></p>
+
+  <div class="tldr">
+    <div class="tldr-label">Module Promise</div>
+    <p>Protect the reclaimed hours from being silently reabsorbed into more shallow work. Install deep-work blocks, communication batching, and device/notification boundaries that actually hold.</p>
+  </div>
+
+  <h2>Videos (26 min, 6 micro-videos)</h2>
+  <ul class="video-list">
+    <li><span class="v-title">10.1 — Attention Is the Scarce Resource</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">10.2 — Deep Work Blocks by Design</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">10.3 — Communication Batching</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">10.4 — Notification and Device Audit</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">10.5 — Setting Expectations With Others</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">10.6 — Defending Reclaimed Hours</span><span class="v-meta">4 min</span></li>
+  </ul>
+
+  <h2>Walk-Away Asset — Attention Defense Playbook</h2>
+  <p>Weekly calendar template, notification audit worksheet, out-of-window auto-responses, boundary-scripts pack (colleague, client, family, team), and a one-page personal defense rules sheet.</p>
+
+  <div class="callout trap">
+    <span class="callout-label">The hidden trap</span>
+    Reclaim without defense = faster reactivity, not fewer hours. Within 2–3 weeks, the time disappears. You have to make the reclaimed hours <em>visible on the calendar</em> — for rest, family, health, or high-value creative work — so they can't be casually scheduled over.
+  </div>
+
+  <h2>Custom GPT Coach — Attention Mode</h2>
+  <p>Redesigns your weekly calendar. Audits notifications. Drafts custom boundary scripts for the 3 people most likely to push back.</p>
+
+  <div class="callout try">
+    <span class="callout-label">Deploy Today</span>
+    Run the redesigned week live. Two deep-work blocks. Batched communication. One hard boundary tested.
+  </div>
+
+  <div class="module-nav">
+    <a href="#" onclick="showPage('module-09');return false">← Module 9</a>
+    <a href="#" onclick="showPage('module-11');return false">Module 11 →</a>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- MODULE 11 -->
+<!-- =========================================================== -->
+<section id="module-11" class="page">
+  <div class="page-badge">Module 11 · I — Institutionalize (1)</div>
+  <h1>Policies That Make Lower-Hour Work Sustainable</h1>
+  <p><span class="pill">75 min</span><span class="pill gold">Walk-away: AI Work Policy Template</span></p>
+
+  <div class="tldr">
+    <div class="tldr-label">Module Promise</div>
+    <p>Convert personal habits into a one-page written policy — personal, team, or organizational — that preserves reclaimed hours as the default way work gets done.</p>
+  </div>
+
+  <h2>Videos (25 min, 6 micro-videos)</h2>
+  <ul class="video-list">
+    <li><span class="v-title">11.1 — Why Personal Productivity Alone Isn't Enough</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">11.2 — Acceptable AI Use</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">11.3 — Review Thresholds and Quality Gates</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">11.4 — Communication and Meeting Norms</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">11.5 — Data, Privacy, and Disclosure</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">11.6 — Rolling Policy to a Team</span><span class="v-meta">4 min</span></li>
+  </ul>
+
+  <h2>The Three Risk Tiers</h2>
+  <table>
+    <tr><th>Tier</th><th>Examples</th><th>Minimum review</th></tr>
+    <tr><td>Low</td><td>Internal notes, summaries, brainstorms</td><td>Skim</td></tr>
+    <tr><td>Medium</td><td>External emails, drafts, briefs</td><td>Human edit</td></tr>
+    <tr><td>High</td><td>Client deliverables, legal, medical, personnel</td><td>Human-led; AI as assistant only</td></tr>
+  </table>
+
+  <h2>Walk-Away Asset — AI Work Policy Template</h2>
+  <p>One-page editable template with sections for purpose, acceptable use, risk tiers and review, communication norms, meeting rules, data and disclosure, and review cadence. Bundled: solo-practitioner version and small-team version as worked examples.</p>
+
+  <h2>Custom GPT Coach — Policy Mode</h2>
+  <p>Drafts your one-page policy from a short questionnaire. Flags regulatory contexts (FERPA, HIPAA, GDPR, attorney-client). Generates rollout conversation points for teams.</p>
+
+  <div class="callout try">
+    <span class="callout-label">Deploy Today</span>
+    Adopt the policy as of next Monday. If applicable, share with one colleague or team.
+  </div>
+
+  <div class="module-nav">
+    <a href="#" onclick="showPage('module-10');return false">← Module 10</a>
+    <a href="#" onclick="showPage('module-12');return false">Module 12 →</a>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- MODULE 12 -->
+<!-- =========================================================== -->
+<section id="module-12" class="page">
+  <div class="page-badge">Module 12 · I — Integrate · Capstone</div>
+  <h1>Your Reclaimed Workweek Blueprint</h1>
+  <p><span class="pill">90 min</span><span class="pill gold">Walk-away: Master Blueprint + 30-day Plan</span></p>
+
+  <div class="tldr">
+    <div class="tldr-label">Module Promise</div>
+    <p>Every output from the course stitched into one master document: a complete operating model, a 30-day implementation calendar, measurable targets, and a plan to keep the gains after the course ends.</p>
+  </div>
+
+  <h2>Videos (26 min, 6 micro-videos)</h2>
+  <ul class="video-list">
+    <li><span class="v-title">12.1 — Stitching It Together</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">12.2 — Your 30-Day Implementation Calendar</span><span class="v-meta">5 min</span></li>
+    <li><span class="v-title">12.3 — Measuring Hours Saved</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">12.4 — Avoiding Backsliding</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">12.5 — From Pilot to Whole Life</span><span class="v-meta">4 min</span></li>
+    <li><span class="v-title">12.6 — Your GPT Coach as Ongoing Partner</span><span class="v-meta">4 min</span></li>
+  </ul>
+
+  <h2>Walk-Away Asset — Reclaimed Workweek Blueprint</h2>
+  <p>A master document with ten sections: starting point, what I stopped, what I compressed, what I built, how I defend it, my rules, 30-day calendar, metrics, review schedule, next domains. Delivered as Docx + Markdown + PDF.</p>
+
+  <h2>Course Completion Criteria</h2>
+  <ol>
+    <li><strong>Hours:</strong> ≥5 hours/week reclaimed vs. Module 1 baseline.</li>
+    <li><strong>Quality:</strong> Output quality held or improved.</li>
+    <li><strong>System:</strong> Documented personal operating system in regular use.</li>
+    <li><strong>Workflows:</strong> ≥3 stable AI-augmented workflows running.</li>
+    <li><strong>Defense:</strong> Calendar and communication rules holding.</li>
+    <li><strong>Policy:</strong> Written AI work policy in use.</li>
+    <li><strong>Blueprint:</strong> Master Blueprint + scheduled review cadence.</li>
+    <li><strong>Commitment:</strong> 30/60/90-day post-course plan.</li>
+  </ol>
+
+  <div class="callout try">
+    <span class="callout-label">Deploy Today</span>
+    Execute the 30-day plan. Come back to the GPT coach at 30, 60, and 90 days.
+  </div>
+
+  <div class="module-nav">
+    <a href="#" onclick="showPage('module-11');return false">← Module 11</a>
+    <a href="#" onclick="showPage('assets');return false">Walk-Away Assets →</a>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- ASSETS -->
+<!-- =========================================================== -->
+<section id="assets" class="page">
+  <div class="page-badge">Walk-Away Assets</div>
+  <h1>The twelve deployable assets</h1>
+  <p>Every module in this course ends with a walk-away asset — a template, worksheet, matrix, canvas, or blueprint you actually use. The full list:</p>
+
+  <table>
+    <tr><th>Module</th><th>Asset</th><th>Format</th></tr>
+    <tr><td>1</td><td>Workweek Vision &amp; Time-Recovery Blueprint</td><td>PDF worksheet</td></tr>
+    <tr><td>2</td><td>AI Workweek Audit Tracker</td><td>Google Sheets + XLSX</td></tr>
+    <tr><td>3</td><td>Requirements Interrogation Worksheet</td><td>PDF + Sheets</td></tr>
+    <tr><td>4</td><td>Keep / Kill / Delegate / Redesign Matrix + Script Pack</td><td>PDF + Docx</td></tr>
+    <tr><td>5</td><td>Personal OS Setup Guide + Starter Templates</td><td>PDF + Notion/Obsidian/Drive versions</td></tr>
+    <tr><td>6</td><td>Core Prompt Pack (5 RCTCO-structured prompts)</td><td>PDF + JSON</td></tr>
+    <tr><td>7</td><td>Communication Compression Kit</td><td>Prompt library + Sheets + PDF norms</td></tr>
+    <tr><td>8</td><td>Research &amp; Briefing Workflow Pack</td><td>Prompts + templates + platform guide</td></tr>
+    <tr><td>9</td><td>Workflow Builder Canvas + Automation Readiness Checklist</td><td>PDF + Sheets</td></tr>
+    <tr><td>10</td><td>Attention Defense Playbook</td><td>PDF + calendar templates + scripts</td></tr>
+    <tr><td>11</td><td>AI Work Policy Template</td><td>Docx + Markdown + 2 worked examples</td></tr>
+    <tr><td>12</td><td>Reclaimed Workweek Blueprint</td><td>Docx + Markdown + PDF</td></tr>
+  </table>
+
+  <div class="callout tip">
+    <span class="callout-label">Where to get them</span>
+    Asset downloads ship with each module when the course launches. The repo holds the source Markdown for every module at <code>/modules/</code>.
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- PROMPTS -->
+<!-- =========================================================== -->
+<section id="prompts" class="page">
+  <div class="page-badge">Prompt Library</div>
+  <h1>Prompts you can steal right now</h1>
+  <p>Every prompt here uses the RCTCO structure from Module 6: <strong>R</strong>ole, <strong>C</strong>ontext, <strong>T</strong>ask, <strong>C</strong>onstraints, <strong>O</strong>utput. Replace the <code>{placeholders}</code> with your specifics and use these on any major AI tool (ChatGPT, Claude, Gemini, Copilot).</p>
+
+  <h2>1. Summarize (source-grounded)</h2>
+<pre><code>ROLE: Senior analyst helping me process {pilot domain} material.
+CONTEXT: I'm building a brief for {audience} on {topic}.
+TASK: Summarize the source below using ONLY its content. Flag any inference.
+CONSTRAINTS: Plain language, no filler, ≤250 words.
+OUTPUT FORMAT:
+- Central thesis (1 sentence)
+- Key points (3–5 bullets)
+- Implications for {audience} (2–3 bullets)
+- Open questions or gaps (bullets)
+- Uncertainty flags
+
+SOURCE:
+{paste here}</code></pre>
+
+  <h2>2. Draft (in-voice)</h2>
+<pre><code>ROLE: Ghostwriter matching my voice.
+CONTEXT: Audience is {audience}. Purpose: {purpose}. Tone: {tone}.
+TASK: Draft a {email/memo/post} based on the brief below.
+CONSTRAINTS: ≤{word count}. Match the exemplars provided. Flag anything unclear.
+OUTPUT FORMAT: Subject line + body. No preamble.
+
+EXEMPLARS OF MY VOICE:
+{paste 2–3 samples}
+
+BRIEF:
+{paste here}</code></pre>
+
+  <h2>3. Compare (matrix)</h2>
+<pre><code>ROLE: Senior research analyst.
+CONTEXT: I have {N} sources on {topic}. I need to see where they agree and disagree.
+TASK: Build a comparison matrix.
+CONSTRAINTS: Neutral tone. Attribute every claim to its source. Flag gaps.
+OUTPUT FORMAT:
+Markdown table — rows: sources; columns: thesis, evidence, conclusions, disagreements.
+Follow with a 3-bullet synthesis.
+
+SOURCES:
+{paste here}</code></pre>
+
+  <h2>4. Transform (rewrite for audience)</h2>
+<pre><code>ROLE: Communication strategist.
+CONTEXT: I have a draft written for {original audience}. I need it for {new audience}.
+TASK: Rewrite keeping the facts, changing the register, vocabulary, and length to fit.
+CONSTRAINTS: No new claims. Flag anything that requires a new source for the new audience.
+OUTPUT FORMAT: Rewritten version, then a short note on what I changed and why.
+
+DRAFT:
+{paste here}</code></pre>
+
+  <h2>5. Extract (action items + decisions)</h2>
+<pre><code>ROLE: Meeting scribe.
+CONTEXT: Below is a transcript/notes from {meeting name}. Attendees: {names}.
+TASK: Produce the full follow-up package.
+CONSTRAINTS: No filler. Every action item has an owner and deadline.
+OUTPUT FORMAT:
+1. Summary (≤150 words)
+2. Decisions (bullets)
+3. Action items (table: Owner | Action | Due)
+4. Open questions
+5. Draft follow-up email to attendees
+
+TRANSCRIPT:
+{paste here}</code></pre>
+
+  <div class="callout tip">
+    <span class="callout-label">The shortcut</span>
+    Name and save these prompts in your operating system's Templates folder. The anchor-prompts library is a one-time setup that pays for itself within a week.
+  </div>
+
+  <h2>Bonus: the inbox triage prompt (from Module 7)</h2>
+<pre><code>ROLE: My executive assistant.
+TASK: Classify each email below into RESPOND (needs me &lt;5 min), SCHEDULE (needs me with prep),
+DELEGATE (someone else), or ARCHIVE (no action).
+For RESPOND items, draft a reply in my voice using these exemplars: {samples}.
+For SCHEDULE items, draft a calendar proposal.
+For DELEGATE items, draft a handoff message.
+Flag anything ambiguous.
+
+EMAILS:
+{paste here}</code></pre>
+</section>
+
+<!-- =========================================================== -->
+<!-- GPT SPEC -->
+<!-- =========================================================== -->
+<section id="gpt" class="page">
+  <div class="page-badge">Custom GPT</div>
+  <h1>The AI Lifestyle Design Coach</h1>
+  <p><em>One GPT. Twelve modes. A coach, not a tutor.</em></p>
+
+  <div class="tldr">
+    <div class="tldr-label">What it is</div>
+    <p>A single custom GPT configured with module-specific knowledge, asset templates, and a strict operating style. Every session ends with a completed artifact and a concrete next action within 48 hours.</p>
+  </div>
+
+  <h2>The twelve modes</h2>
+  <table>
+    <tr><th>Mode</th><th>Module</th><th>Primary output</th></tr>
+    <tr><td>Vision</td><td>M1</td><td>Workweek Vision &amp; Time-Recovery Blueprint</td></tr>
+    <tr><td>Audit</td><td>M2</td><td>AI Workweek Audit Tracker + Opportunity Map</td></tr>
+    <tr><td>Essentialism</td><td>M3</td><td>Requirements Interrogation Worksheet</td></tr>
+    <tr><td>Deletion</td><td>M4</td><td>Keep/Kill/Delegate/Redesign Matrix + drafted messages</td></tr>
+    <tr><td>Operating System</td><td>M5</td><td>Personal OS Setup Guide (tool-specific)</td></tr>
+    <tr><td>Prompt Builder</td><td>M6</td><td>5 anchor prompts</td></tr>
+    <tr><td>Communication</td><td>M7</td><td>Communication Compression Kit</td></tr>
+    <tr><td>Research</td><td>M8</td><td>Brief + derivatives from a source packet</td></tr>
+    <tr><td>Workflow Design</td><td>M9</td><td>Workflow Builder Canvas + Readiness score</td></tr>
+    <tr><td>Attention</td><td>M10</td><td>Attention Defense Playbook</td></tr>
+    <tr><td>Policy</td><td>M11</td><td>One-page AI Work Policy</td></tr>
+    <tr><td>Capstone</td><td>M12</td><td>Reclaimed Workweek Blueprint + 30-day plan</td></tr>
+  </table>
+
+  <h2>Operating rules (excerpt from the system prompt)</h2>
+  <ol>
+    <li>Start every session by asking which module the student is working on.</li>
+    <li>Ask one question at a time when the student seems uncertain or overloaded.</li>
+    <li>Never deliver generic advice. Every response ties to producing the module's walk-away asset.</li>
+    <li>Never let the student leave a session without a completed artifact.</li>
+    <li>Default to structured output: tables, matrices, checklists.</li>
+    <li>Challenge weak assumptions. If the student scores everything "high value," push back.</li>
+    <li>Always end with a concrete next action within 48 hours.</li>
+    <li>Automation is taught as last — never first.</li>
+    <li>Flag regulated content (FERPA, HIPAA, client-confidential, legal privilege) explicitly.</li>
+  </ol>
+
+  <h2>Conversation starters (preloaded)</h2>
+  <ul>
+    <li>"I'm starting Module 1 — help me build my Workweek Vision."</li>
+    <li>"I've logged my week. Let's build my audit."</li>
+    <li>"Help me interrogate my top 10 obligations."</li>
+    <li>"I'm ready to delete some things — walk me through it."</li>
+    <li>"Help me set up my personal operating system."</li>
+    <li>"Build my 5 anchor prompts with me."</li>
+    <li>"My inbox and meetings are eating me alive — let's compress."</li>
+    <li>"Turn this source packet into a brief."</li>
+    <li>"I want to design a workflow for a recurring task."</li>
+    <li>"Redesign my week to protect deep work."</li>
+    <li>"Draft an AI work policy for me or my team."</li>
+    <li>"Build my final Reclaimed Workweek Blueprint."</li>
+  </ul>
+
+  <div class="callout tip">
+    <span class="callout-label">Build vs. use</span>
+    The full spec (system prompt, knowledge files, tone guide, guardrails) lives in <code>/modules/13-Custom-GPT-Spec.md</code>. The rendered summary above is what a student sees.
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- ABOUT -->
+<!-- =========================================================== -->
+<section id="about" class="page">
+  <div class="page-badge">About</div>
+  <h1>About &amp; Contact</h1>
+
+  <h2>Who made this</h2>
+  <p>Dr. Jason Cherubini, Sellinger School of Business, Loyola University Maryland. Part of a small series of practical AI courses including <a href="https://jcherub112.github.io/ai-for-students/" target="_blank">AI for Students</a> and AI for Faculty.</p>
+
+  <h2>Why it exists</h2>
+  <p>Most AI content teaches tools. This course teaches a system. Tools change every quarter; a system for redesigning work around AI is durable.</p>
+
+  <h2>What it is, and isn't</h2>
+  <ul>
+    <li><strong>Is:</strong> a sequenced, practical 12-module course for knowledge workers with recurring cognitive work.</li>
+    <li><strong>Is:</strong> opinionated about order — diagnose, eliminate, build, augment, redesign, armor, institutionalize.</li>
+    <li><strong>Isn't:</strong> a promise of a literal four-hour week.</li>
+    <li><strong>Isn't:</strong> a tool shootout. Tools are mentioned only where they change what's possible.</li>
+  </ul>
+
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:jccherubini@loyola.edu">jccherubini@loyola.edu</a></p>
+
+  <h2>Credits</h2>
+  <p>Intellectual debts: Tim Ferriss, David Allen, Greg McKeown, Cal Newport, James Clear, Nir Eyal. Engineering-style order-of-operations thinking. And the broader four-day-week research community, which consistently points at redesign — not optimization — as the lever that makes lower-hour work durable.</p>
+
+  <div class="newsletter">
+    <h3>Get the updates</h3>
+    <p>New modules, new assets, occasional notes.</p>
+    <form onsubmit="handleNewsletter(event)">
+      <input type="email" placeholder="you@example.com" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+</main>
+</div>
+
+<script>
+// ============ NAVIGATION ============
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById(id);
+  if (target) target.classList.add('active');
+  document.querySelectorAll('.sidebar a').forEach(a => {
+    a.classList.toggle('active', a.dataset.page === id);
+  });
+  const jump = document.getElementById('pageJump');
+  if (jump) jump.value = id;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.getElementById('sidebar').classList.remove('open');
+}
+function toggleMenu() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+// ============ NEWSLETTER ============
+// TO ACTIVATE: Sign up free at https://formspree.io, create a form, paste the endpoint below.
+const NEWSLETTER_ENDPOINT = "https://formspree.io/f/xnjoealr";
+
+async function handleNewsletter(e) {
+  e.preventDefault();
+  const form = e.target;
+  const input = form.querySelector('input[type="email"]');
+  const btn = form.querySelector('button');
+  const email = input.value.trim();
+  if (!email) return;
+  const originalText = btn.textContent;
+  btn.textContent = 'Subscribing…';
+  btn.disabled = true;
+  try {
+    const res = await fetch(NEWSLETTER_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, source: 'ai-for-everybody', page: window.location.hash || '#start' })
+    });
+    if (res.ok) { btn.textContent = 'Subscribed ✓'; btn.style.background = 'var(--gold)'; input.value = ''; }
+    else { btn.textContent = 'Try again'; }
+  } catch (err) { btn.textContent = 'Network error'; }
+  setTimeout(() => { btn.textContent = originalText; btn.style.background = ''; btn.disabled = false; }, 3000);
+}
+
+// Deep-link support: #module-03 loads that page
+window.addEventListener('load', () => {
+  const hash = window.location.hash.replace('#','');
+  if (hash && document.getElementById(hash)) showPage(hash);
+});
+</script>
+</body>
+</html>
